@@ -4,7 +4,7 @@ class MyModel {
 
     private val counters = mutableListOf(0, 0, 0)
 
-    fun getCurrent(position: Int): Int {
+    private fun getCurrent(position: Int): Int {
         return counters[position]
     }
 

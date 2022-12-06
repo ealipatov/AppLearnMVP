@@ -8,15 +8,15 @@ class MyPresenter(private val view: MyView) {
         when (id) {
             R.id.btn_one -> {
                 val nextValue = model.next(0)
-                view.setText(nextValue.toString())
+                view.setText(nextValue.toString(), 0)
             }
             R.id.btn_two -> {
                 val nextValue = model.next(1)
-                view.setText(nextValue.toString())
+                view.setText(nextValue.toString(), 1)
             }
             R.id.btn_three -> {
                 val nextValue = model.next(2)
-                view.setText(nextValue.toString())
+                view.setText(nextValue.toString(), 2)
             }
         }
     }
