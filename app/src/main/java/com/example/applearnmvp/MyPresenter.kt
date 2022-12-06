@@ -5,19 +5,11 @@ class MyPresenter(private val view: MyView) {
     private val model = MyModel()
 
     fun onBtnClick(id: Int) {
-        when (id) {
-            R.id.btn_one -> {
-                val nextValue = model.next(0)
-                view.setText(nextValue.toString(), 0)
-            }
-            R.id.btn_two -> {
-                val nextValue = model.next(1)
-                view.setText(nextValue.toString(), 1)
-            }
-            R.id.btn_three -> {
-                val nextValue = model.next(2)
-                view.setText(nextValue.toString(), 2)
-            }
-        }
+        val position = view.getPositionById(id)
+        view.setText(nextValue(position).toString(), position)
+    }
+
+    private fun nextValue(position: Int):Int{
+        return model.next(position)
     }
 }
