@@ -12,7 +12,8 @@ class MyModel {
         counters[position]++
         return getCurrent(position)
     }
-    fun set(position: Int, value: Int){
+
+    fun set(position: Int, value: Int) {
         counters[position] = value
     }
 }

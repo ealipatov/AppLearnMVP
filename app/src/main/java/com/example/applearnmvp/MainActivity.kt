@@ -22,14 +22,14 @@ class MainActivity : AppCompatActivity(), MyView {
 
         initPresenter()
 
-        with(binding){
-            btnOne.setOnClickListener{
+        with(binding) {
+            btnOne.setOnClickListener {
                 presenter.onBtnClick(R.id.btn_one)
             }
-            btnTwo.setOnClickListener{
+            btnTwo.setOnClickListener {
                 presenter.onBtnClick(R.id.btn_two)
             }
-            btnThree.setOnClickListener{
+            btnThree.setOnClickListener {
                 presenter.onBtnClick(R.id.btn_three)
             }
         }
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity(), MyView {
     /***
      * Инициализируем Презентер
      */
-    private fun initPresenter(){
+    private fun initPresenter() {
         presenter = MyPresenter(this)
     }
 
@@ -47,11 +47,11 @@ class MainActivity : AppCompatActivity(), MyView {
      * меняем значение соответствующего "счетчика" (текстового поля)
      */
     override fun setText(count: String, position: Int) {
-        with(binding){
-            when (position){
-                POSITION_ONE-> textViewOne.text = count
-                POSITION_TWO-> textViewTwo.text = count
-                POSITION_THREE-> textViewThree.text = count
+        with(binding) {
+            when (position) {
+                POSITION_ONE -> textViewOne.text = count
+                POSITION_TWO -> textViewTwo.text = count
+                POSITION_THREE -> textViewThree.text = count
             }
         }
     }

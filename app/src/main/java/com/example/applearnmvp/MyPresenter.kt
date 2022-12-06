@@ -9,7 +9,7 @@ class MyPresenter(private val view: MyView) {
         view.setText(nextValue(position).toString(), position)
     }
 
-    private fun nextValue(position: Int):Int{
+    private fun nextValue(position: Int): Int {
         return model.next(position)
     }
 }
