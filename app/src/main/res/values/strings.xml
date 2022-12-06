@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">AppLearnMVP</string>
+    <string name="any_text">AnyText</string>
+    <string name="any_btn">AnyBtn</string>
+</resources>
