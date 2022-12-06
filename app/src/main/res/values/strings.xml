@@ -2,4 +2,8 @@
     <string name="app_name">AppLearnMVP</string>
     <string name="any_text">AnyText</string>
     <string name="any_btn">AnyBtn</string>
+    <string name="this_is">This is:</string>
+    <string name="button_one">Button One</string>
+    <string name="button_two">Button Two</string>
+    <string name="button_three">Button Three</string>
 </resources>
