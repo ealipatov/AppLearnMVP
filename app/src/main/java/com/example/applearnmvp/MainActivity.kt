@@ -13,6 +13,8 @@ class MainActivity : AppCompatActivity(), MyView {
     private val binding get() = _binding!!
 
 
+ //   private val presenter by moxyPresenter {MyPresenter(MyModel())}
+
     private lateinit var presenter: MyPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,15 +24,27 @@ class MainActivity : AppCompatActivity(), MyView {
 
         initPresenter()
 
+//        with(binding) {
+//            btnOne.setOnClickListener {
+//                presenter.onBtnClick(R.id.btn_one)
+//            }
+//            btnTwo.setOnClickListener {
+//                presenter.onBtnClick(R.id.btn_two)
+//            }
+//            btnThree.setOnClickListener {
+//                presenter.onBtnClick(R.id.btn_three)
+//            }
+//        }
+
         with(binding) {
             btnOne.setOnClickListener {
-                presenter.onBtnClick(R.id.btn_one)
+                presenter.onBtnOneClick()
             }
             btnTwo.setOnClickListener {
-                presenter.onBtnClick(R.id.btn_two)
+                presenter.onBtnTwoClick()
             }
             btnThree.setOnClickListener {
-                presenter.onBtnClick(R.id.btn_three)
+                presenter.onBtnThreeClick()
             }
         }
     }
@@ -39,7 +53,7 @@ class MainActivity : AppCompatActivity(), MyView {
      * Инициализируем Презентер
      */
     private fun initPresenter() {
-        presenter = MyPresenter(this)
+        presenter = MyPresenter(MyModel())
     }
 
     /***
@@ -66,6 +80,18 @@ class MainActivity : AppCompatActivity(), MyView {
             R.id.btn_three -> POSITION_THREE
             else -> 0
         }
+    }
+
+    override fun setCountOneText(counter: String) {
+        binding.textViewOne.text = counter
+    }
+
+    override fun setCountTwoText(counter: String) {
+        binding.textViewTwo.text = counter
+    }
+
+    override fun setCountThreeText(counter: String) {
+        binding.textViewThree.text = counter
     }
 
     /***

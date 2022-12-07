@@ -1,15 +1,30 @@
 package com.example.applearnmvp
 
-class MyPresenter(private val view: MyView) {
+import moxy.MvpPresenter
 
-    private val model = MyModel()
+class MyPresenter(private val model: MyModel): MvpPresenter<MyView>() {
 
-    fun onBtnClick(id: Int) {
-        val position = view.getPositionById(id)
-        view.setText(nextValue(position).toString(), position)
+
+
+    fun onBtnOneClick(){
+        val newValue = model.next(0)
+        viewState.setCountOneText(newValue.toString())
+    }
+    fun onBtnTwoClick(){
+        val newValue = model.next(1)
+        viewState.setCountTwoText(newValue.toString())
+    }
+    fun onBtnThreeClick(){
+        val newValue = model.next(2)
+        viewState.setCountThreeText(newValue.toString())
     }
 
-    private fun nextValue(position: Int): Int {
-        return model.next(position)
-    }
+//    fun onBtnClick(id: Int) {
+//        val position = viewState.getPositionById(id)
+//        viewState.setText(nextValue(position).toString(), position)
+//    }
+
+//    private fun nextValue(position: Int): Int {
+//        return model.next(position)
+//    }
 }
