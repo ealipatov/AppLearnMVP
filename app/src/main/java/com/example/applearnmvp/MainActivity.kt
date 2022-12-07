@@ -1,28 +1,27 @@
 package com.example.applearnmvp
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.example.applearnmvp.databinding.ActivityMainBinding
 import com.example.applearnmvp.utils.POSITION_ONE
 import com.example.applearnmvp.utils.POSITION_THREE
 import com.example.applearnmvp.utils.POSITION_TWO
+import moxy.MvpAppCompatActivity
+import moxy.ktx.moxyPresenter
 
-class MainActivity : AppCompatActivity(), MyView {
+class MainActivity : MvpAppCompatActivity(), MyView {
 
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
 
 
- //   private val presenter by moxyPresenter {MyPresenter(MyModel())}
-
-    private lateinit var presenter: MyPresenter
+    private val presenter by moxyPresenter {MyPresenter(MyModel())}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        initPresenter()
+//        initPresenter()
 
 //        with(binding) {
 //            btnOne.setOnClickListener {
@@ -49,12 +48,12 @@ class MainActivity : AppCompatActivity(), MyView {
         }
     }
 
-    /***
-     * Инициализируем Презентер
-     */
-    private fun initPresenter() {
-        presenter = MyPresenter(MyModel())
-    }
+//    /***
+//     * Инициализируем Презентер
+//     */
+//    private fun initPresenter() {
+//        presenter = MyPresenter(MyModel())
+//    }
 
     /***
      * В соответствии в выбраной позицией (нажатой кнопкой),
@@ -70,17 +69,17 @@ class MainActivity : AppCompatActivity(), MyView {
         }
     }
 
-    /***
-     * Взвращаем позицию в зависимости от id
-     */
-    override fun getPositionById(id: Int): Int {
-        return when (id) {
-            R.id.btn_one -> POSITION_ONE
-            R.id.btn_two -> POSITION_TWO
-            R.id.btn_three -> POSITION_THREE
-            else -> 0
-        }
-    }
+//    /***
+//     * Взвращаем позицию в зависимости от id
+//     */
+//    override fun getPositionById(id: Int): Int {
+//        return when (id) {
+//            R.id.btn_one -> POSITION_ONE
+//            R.id.btn_two -> POSITION_TWO
+//            R.id.btn_three -> POSITION_THREE
+//            else -> 0
+//        }
+//    }
 
     override fun setCountOneText(counter: String) {
         binding.textViewOne.text = counter

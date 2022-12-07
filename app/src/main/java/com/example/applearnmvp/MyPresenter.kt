@@ -4,8 +4,6 @@ import moxy.MvpPresenter
 
 class MyPresenter(private val model: MyModel): MvpPresenter<MyView>() {
 
-
-
     fun onBtnOneClick(){
         val newValue = model.next(0)
         viewState.setCountOneText(newValue.toString())
