@@ -1,5 +1,7 @@
 package com.example.applearnmvp
 
+import com.example.applearnmvp.model.MyModel
+import com.example.applearnmvp.ui.MyView
 import moxy.MvpPresenter
 
 class MyPresenter(private val model: MyModel): MvpPresenter<MyView>() {

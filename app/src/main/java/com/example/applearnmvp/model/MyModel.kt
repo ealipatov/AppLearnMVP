@@ -1,4 +1,4 @@
-package com.example.applearnmvp
+package com.example.applearnmvp.model
 
 class MyModel {
 

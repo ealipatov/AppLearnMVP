@@ -1,7 +1,9 @@
-package com.example.applearnmvp
+package com.example.applearnmvp.ui
 
 import android.os.Bundle
+import com.example.applearnmvp.MyPresenter
 import com.example.applearnmvp.databinding.ActivityMainBinding
+import com.example.applearnmvp.model.MyModel
 import com.example.applearnmvp.utils.POSITION_ONE
 import com.example.applearnmvp.utils.POSITION_THREE
 import com.example.applearnmvp.utils.POSITION_TWO
@@ -14,14 +16,12 @@ class MainActivity : MvpAppCompatActivity(), MyView {
     private val binding get() = _binding!!
 
 
-    private val presenter by moxyPresenter {MyPresenter(MyModel())}
+    private val presenter by moxyPresenter { MyPresenter(MyModel()) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-//        initPresenter()
 
 //        with(binding) {
 //            btnOne.setOnClickListener {
@@ -47,13 +47,6 @@ class MainActivity : MvpAppCompatActivity(), MyView {
             }
         }
     }
-
-//    /***
-//     * Инициализируем Презентер
-//     */
-//    private fun initPresenter() {
-//        presenter = MyPresenter(MyModel())
-//    }
 
     /***
      * В соответствии в выбраной позицией (нажатой кнопкой),

@@ -1,4 +1,4 @@
-package com.example.applearnmvp
+package com.example.applearnmvp.ui
 
 import moxy.MvpView
 import moxy.viewstate.strategy.AddToEndSingleStrategy
