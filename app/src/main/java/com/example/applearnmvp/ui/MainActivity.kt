@@ -2,9 +2,12 @@ package com.example.applearnmvp.ui
 
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.applearnmvp.MyPresenter
 import com.example.applearnmvp.databinding.ActivityMainBinding
 import com.example.applearnmvp.model.GithubUser
+import com.example.applearnmvp.repository.impl.GithubRepositoryImpl
 import moxy.MvpAppCompatActivity
+import moxy.ktx.moxyPresenter
 
 class MainActivity : MvpAppCompatActivity(), MyView {
 
@@ -12,7 +15,7 @@ class MainActivity : MvpAppCompatActivity(), MyView {
     private val binding get() = _binding!!
 
 
-//    private val presenter by moxyPresenter { MyPresenter(GithubRepositoryImpl()) }
+    private val presenter by moxyPresenter { MyPresenter(GithubRepositoryImpl()) }
     private val adapter = MyUserAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,7 +32,7 @@ class MainActivity : MvpAppCompatActivity(), MyView {
     }
 
     override fun initList(list: List<GithubUser>) {
-        adapter.users
+        adapter.users = list
     }
 
     /***
