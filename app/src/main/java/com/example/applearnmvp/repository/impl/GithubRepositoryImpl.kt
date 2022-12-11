@@ -2,7 +2,7 @@ package com.example.applearnmvp.repository.impl
 
 import com.example.applearnmvp.model.GithubUser
 
-class GithubRepositoryImpl: GithubInterface {
+class GithubRepositoryImpl: GithubRepository {
 
     private val repositories = listOf(
         GithubUser("MrFox"),

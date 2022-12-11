@@ -1,5 +1,6 @@
 package com.example.applearnmvp.ui
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.applearnmvp.R
 import com.example.applearnmvp.model.GithubUser
 
-class MyUserAdapter(private val users: List<GithubUser>): RecyclerView.Adapter<GithubUserViewHolder>() {
+class MyUserAdapter : RecyclerView.Adapter<GithubUserViewHolder>() {
+
+    var users: List<GithubUser> = emptyList()
+
+    @SuppressLint("NotifyDataSetChanged")
+        set(value){
+            field = value
+            notifyDataSetChanged() // Всеегда желательно использовать диф_утил
+        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GithubUserViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_user, parent, false)
