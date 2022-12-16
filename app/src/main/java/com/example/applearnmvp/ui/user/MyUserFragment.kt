@@ -7,14 +7,17 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.applearnmvp.MyApp
 import com.example.applearnmvp.core.OnBackPressedListener
+import com.example.applearnmvp.core.navigation.UsersDetailScreens
 import com.example.applearnmvp.databinding.FragmentUserListBinding
 import com.example.applearnmvp.model.GithubUser
 import com.example.applearnmvp.repository.impl.GithubRepositoryImpl
 import com.example.applearnmvp.ui.MyUserAdapter
+import com.example.applearnmvp.ui.OnItemClickListener
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 
-class MyUserFragment: MvpAppCompatFragment(), MyUserView, OnBackPressedListener {
+class MyUserFragment: MvpAppCompatFragment(), MyUserView, OnBackPressedListener,
+    OnItemClickListener {
 
     private var _binding: FragmentUserListBinding? = null
     private val binding get() = _binding!!
@@ -34,7 +37,7 @@ class MyUserFragment: MvpAppCompatFragment(), MyUserView, OnBackPressedListener 
         MyUserPresenter(GithubRepositoryImpl(), MyApp.instance.router)
     }
 
-    private val adapter = MyUserAdapter()
+    private val adapter = MyUserAdapter(this)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -65,4 +68,9 @@ class MyUserFragment: MvpAppCompatFragment(), MyUserView, OnBackPressedListener 
     }
 
     override fun onBackPressed() = presenter.onBackPressed()
+
+    override fun onItemClicked(item: GithubUser) {
+        MyApp.instance.router.navigateTo(UsersDetailScreens)
+    }
+
 }

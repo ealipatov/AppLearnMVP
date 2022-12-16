@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.applearnmvp.R
 import com.example.applearnmvp.model.GithubUser
 
-class MyUserAdapter : RecyclerView.Adapter<GithubUserViewHolder>() {
+class MyUserAdapter (private val itemClickListener: OnItemClickListener) : RecyclerView.Adapter<GithubUserViewHolder>() {
 
     var users: List<GithubUser> = emptyList()
 
@@ -25,7 +25,7 @@ class MyUserAdapter : RecyclerView.Adapter<GithubUserViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: GithubUserViewHolder, position: Int) {
-        holder.bind(users[position])
+        holder.bind(users[position],itemClickListener)
     }
 
     override fun getItemCount(): Int {
@@ -37,7 +37,12 @@ class GithubUserViewHolder (itemView: View): RecyclerView.ViewHolder(itemView){
 
     private val userLogin by lazy {itemView.findViewById<TextView>(R.id.userLogin)}
 
-    fun bind(item: GithubUser) = with(item){
+    fun bind(item: GithubUser, clickListener: OnItemClickListener) = with(item){
         userLogin.text = login
+        itemView.setOnClickListener {clickListener.onItemClicked(item)}
     }
+}
+
+interface OnItemClickListener{
+    fun onItemClicked(item: GithubUser)
 }

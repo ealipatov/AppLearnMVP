@@ -10,7 +10,6 @@ class MyPresenter(
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
-   //     router.navigateTo(UsersScreens)
         router.replaceScreen(UsersScreens)
     }
 
