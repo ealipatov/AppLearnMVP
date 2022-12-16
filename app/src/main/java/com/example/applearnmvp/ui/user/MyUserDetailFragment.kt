@@ -4,18 +4,28 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import com.example.applearnmvp.MyApp
+import com.example.applearnmvp.core.OnBackPressedListener
 import com.example.applearnmvp.databinding.FragmentUserDetailBinding
+import com.example.applearnmvp.model.GithubUser
+import com.example.applearnmvp.repository.impl.GithubRepositoryImpl
+import moxy.MvpAppCompatFragment
+import moxy.ktx.moxyPresenter
 
-class MyUserDetailFragment: Fragment() {
+class MyUserDetailFragment(private val item: GithubUser): MvpAppCompatFragment(),
+    OnBackPressedListener {
 
     private var _binding: FragmentUserDetailBinding? = null
     private val binding get() = _binding!!
 
     companion object{
-        fun getInstance(): MyUserDetailFragment {
-            return  MyUserDetailFragment()
+        fun getInstance(item: GithubUser): MyUserDetailFragment {
+            return  MyUserDetailFragment(item)
         }
+    }
+
+    private val presenter: MyUserPresenter by moxyPresenter {
+        MyUserPresenter(GithubRepositoryImpl(), MyApp.instance.router)
     }
 
     override fun onCreateView(
@@ -32,9 +42,11 @@ class MyUserDetailFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding){
-            userDetail.text = "item.login"
+            userDetail.text = item.login
         }
     }
+
+    override fun onBackPressed() = presenter.onBackPressed()
 
     override fun onDestroy() {
         super.onDestroy()

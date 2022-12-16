@@ -25,11 +25,6 @@ class MyUserFragment: MvpAppCompatFragment(), MyUserView, OnBackPressedListener,
     companion object{
         fun getInstance(): MyUserFragment {
             return  MyUserFragment()
-//                .apply {
-//                    arguments = Bundle(
-//                        "login" to login
-//                    )
-//                }
         }
     }
 
@@ -70,7 +65,7 @@ class MyUserFragment: MvpAppCompatFragment(), MyUserView, OnBackPressedListener,
     override fun onBackPressed() = presenter.onBackPressed()
 
     override fun onItemClicked(item: GithubUser) {
-        MyApp.instance.router.navigateTo(UsersDetailScreens)
+        MyApp.instance.router.navigateTo(UsersDetailScreens(item))
     }
 
 }
